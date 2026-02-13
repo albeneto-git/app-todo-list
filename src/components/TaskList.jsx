@@ -1,11 +1,14 @@
 import Task from "./Task"
 
-const TaskList = () => {
+const TaskList = ({tasks, onDeleteTask}) => {
     return (
         <ul>
-            <Task />
-            <Task />
-            <Task />
+            {tasks.map((task) => (
+                <Task 
+                    key={task.id} 
+                    task={task} 
+                    onDelete={() => onDeleteTask(task.id)} />
+            ))}
         </ul>
     )
 };

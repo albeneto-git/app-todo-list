@@ -13,9 +13,7 @@ function App() {
   }, [tasks]);
 
   const addTask = (task) => {
-    // tarefa === id, text, done
     setTasks([...tasks, {id: Date.now(), text: task, done: false}]);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
   const deleteTask = (taskId) => {

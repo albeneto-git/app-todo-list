@@ -4,12 +4,18 @@ import TaskList from "./components/TaskList";
 
 function App() {
 
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState( JSON.parse(localStorage.getItem("tasks")) || [] );
+
+  useEffect(() => {
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    
+  }, [tasks]);
 
   const addTask = (task) => {
     // tarefa === id, text, done
     setTasks([...tasks, {id: Date.now(), text: task, done: false}]);
-    // localstorege
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
   const deleteTask = (taskId) => {

@@ -1,6 +1,9 @@
 import Task from "./Task"
 
 const TaskList = ({tasks, onDeleteTask, onToggleTaskDone}) => {
+    if(tasks.length === 0){
+        return <p>Não há tarefas cadastradas!</p>   
+    }
     return (
         <ul>
             {tasks.map((task) => (
